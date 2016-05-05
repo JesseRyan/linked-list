@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script>
+$( document ).ready( function (){
+
+	var list = new linkedList ( );
+	for ( var i = 0; i < 10; i++ ){
+		list.append( i );
+	}
+			
+});
+
+
+var linkedList = function ( ) {
+	this.head = null;
+	this.length = null; 
+	
+	this.node = function ( d ){
+		this.next = null;
+		this.data = d;
+	}
+	
+	
+
+}
+
+linkedList.prototype.append = function ( d ){
+	
+	var end  = new this.node( d );
+	
+	if ( this.head == null ){
+		this.head = end;
+		return true;
+	}
+	
+	var n = this.head;
+	while ( n.next != null ){
+		n = n.next;
+	}
+	n.next = end;
+}
+
+linkedList.prototype.delete = function( d ){
+	
+	var n = this.head;
+	var prev = null; 
+	
+	while ( n.next != null ){
+
+		if ( n.data == d  ){
+		// execute delete; 
+			if ( prev == null ){
+				console.log("prev is null");
+				this.head = n.next;
+				return true; 
+			}
+			prev.next = n.next;
+			return true; 
+		}
+		
+		prev = n;
+		n = n.next;
+	}
+
+}
+
+linkedList.prototype.print = function(){
+	
+	var n = this.head;
+	console.log( n.data );	
+	while ( n.next != null ){
+		n = n.next;
+		console.log( n.data );	
+	}
+
+}
+
+</script>
+</head>
+<body>
+
+
+</body>
+<style>
+
+</style>
+</html>
